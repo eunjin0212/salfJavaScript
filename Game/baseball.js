@@ -13,15 +13,19 @@ function numFunc() {
   number = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   numberArr = [];
   for (let i = 0; i < 4; i++) {
-    let pickNumber = number.splice(Math.floor(Math.random() * (9 - i)), 1)[0];
+    //4개숫자들을 반복적으로 뽑음
+    let select = Math.floor(Math.random() * 9); //i
+    let pickNumber = number.splice(select, 1);
     //splice 배열의 요소를 변경할 때 사용
-    numberArr.push(pickNumber);
+    numberArr.push(pickNumber[0]);
+    console.log(pickNumber);
   }
   console.log(numberArr);
 }
 function resetNum() {
   bbInput.value = "";
 }
+
 numFunc();
 
 let wrongAnswer = 0;
@@ -30,16 +34,15 @@ bbForm.addEventListener("submit", function (event) {
   event.preventDefault();
   const result = bbInput.value;
   console.log(bbInput.value);
-  if (result === numberArr.join("")) {
+  if (result === numberArr) {
     //홈런인지 아닌지
-    //join 배열의 모든 요소들을 합쳐줌
     bbResult.textContent = "홈런";
     numFunc();
     resetNum();
     wrongAnswer = 0;
   } else {
     //몇번 스트라이크, 볼을 했는지
-    const resultArr = result.split(""); //split 문자열을 분할
+    const resultArr = result;
     let strike = 0;
     let ball = 0;
     wrongAnswer++;

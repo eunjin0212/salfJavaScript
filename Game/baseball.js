@@ -23,12 +23,12 @@ function numFunc() {
     numberArr.push(pickNumber[0]); //배열의 첫번째 자리를 추출
   }
   console.log("문제", numberArr);
-  console.log(typeof numberArr); //object
+  //console.log(typeof numberArr); //object
 }
-let result = bbInput.value;
 
 function resetNum() {
-  result = "";
+  bbInput.value = "";
+  bbInput.focus();
 }
 
 numFunc();
@@ -37,7 +37,8 @@ let wrongAnswer = 0;
 
 bbForm.addEventListener("submit", function (event) {
   event.preventDefault(); //새로고침 막아주기
-  if (result === numberArr) {
+  let result = bbInput.value;
+  if (result === numberArr.join("")) {
     //홈런인지 아닌지
     bbResult.textContent = "홈런";
     numFunc();
@@ -45,32 +46,33 @@ bbForm.addEventListener("submit", function (event) {
     wrongAnswer = 0;
   } else {
     //몇번 스트라이크, 볼을 했는지
-    const resultArr = result;
-    console.log(typeof result); //string
+    const resultArr = result.split("");
+    //console.log(typeof result); //string
     let strike = 0;
     let ball = 0;
     wrongAnswer++;
-    if (wrongAnswer > 3) {
+    if (wrongAnswer > 4) {
       //정답 횟수 제한
-      bbResult.textContent = "한도초과! 답은" + numberArr.join("");
+      bbResult.textContent = "한도초과! 답은" + numberArr;
       //join은 "",""... 이런식으로 합쳐줌
       numFunc();
       resetNum();
       wrongAnswer = 0;
     } else {
-      for (let i = 0; i < 3; i++) {
-        if (Number(resultArr[i]) === numberArr[i]) {
+      for (let i = 0; i <= 3; i++) {
+        if (Number(resultArr[i]) == numberArr[i]) {
           //타입을 숫자로 변환
           strike++;
-        } else if (numberArr.indexOf(Number(resultArr[i]))) {
+        } else if (numberArr.indexOf(Number(resultArr[i])) > -1) {
           //배열 안에 일치하는 것 찾기
           ball++;
         }
+        console.log(numberArr.indexOf(Number(resultArr[i])) > 0);
       }
       bbResult.textContent = strike + "스트라이크" + ball + "볼";
       resetNum();
 
-      console.log("resultArr", resultArr);
+      // console.log("resultArr", resultArr);
     }
   }
 });

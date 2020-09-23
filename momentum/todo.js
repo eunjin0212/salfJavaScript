@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< master
-// const btn = document.querySelector(".logout");
-// btn.addEventListener("click", function () {
-//   localStorage.clear();
-//   getUserName();
-//   console.log(btn);
-// });
-=======
-=======
->>>>>>> 2dcd82f38ba5364f4fde6baec9029135b092e488
 const todoform = document.querySelector(".todo-form"),
   toDoList = document.querySelector(".todo-list"),
   toDoMessage = todoform.querySelector(".todo-message"),
@@ -74,17 +63,10 @@ function getToDo() {
     addToDo.forEach(function (toDo) {
       writeToDo(toDo.text);
     });
-<<<<<<< HEAD
-    toDoMessage.innerText = "Today";
-  } else {
-    //비었다면
-    toDoMessage.innerText = "What is your main focus for today?";
-=======
     toDoMessage.innerText = "What is your main focus for today?";
   } else {
     //비었다면
     toDoMessage.innerText = "Today";
->>>>>>> 2dcd82f38ba5364f4fde6baec9029135b092e488
   }
   return;
 }
@@ -94,7 +76,3 @@ function init() {
 }
 todoform.addEventListener("submit", toDoSubmit);
 init();
-<<<<<<< HEAD
->>>>>>> local
-=======
->>>>>>> 2dcd82f38ba5364f4fde6baec9029135b092e488

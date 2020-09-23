@@ -38,13 +38,12 @@ function writeToDo(text) {
   li.id = newToDo;
   toDoList.appendChild(li);
   const toDoObj = {
-    text: text,
+    text,
     id: newToDo,
   };
-  if (userToDo.push(toDoObj)) {
-    saveToDo();
-    toDoMessage.innerText = "Today";
-  }
+  userToDo.push(toDoObj);
+  saveToDo();
+  toDoMessage.innerText = "Today";
 }
 
 function toDoSubmit(event) {
@@ -63,10 +62,10 @@ function getToDo() {
     addToDo.forEach(function (toDo) {
       writeToDo(toDo.text);
     });
-    toDoMessage.innerText = "What is your main focus for today?";
+    toDoMessage.innerText = "Today";
   } else {
     //비었다면
-    toDoMessage.innerText = "Today";
+    toDoMessage.innerText = "What is your main focus for today?";
   }
   return;
 }

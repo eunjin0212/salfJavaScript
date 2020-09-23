@@ -14,10 +14,10 @@ function numFunc() {
   numberArr = [];
   for (let i = 0; i < 4; i++) {
     //4개숫자들을 반복적으로 뽑음
-    let select = Math.floor(Math.random() * 9); //i
-    let pickNumber = number.splice(select, 1);
+    let pickNumber = number.splice(Math.floor(Math.random() * (9 - i)), 1);
+    //하나씩 줄어드는 숫자를 표현되게 i를 빼줌
     //splice 배열의 요소를 변경할 때 사용
-    numberArr.push(pickNumber[0]);
+    numberArr.push(pickNumber[0]); //배열의 첫번째 자리를 추출
     console.log(pickNumber);
   }
   console.log(numberArr);
@@ -31,7 +31,7 @@ numFunc();
 let wrongAnswer = 0;
 
 bbForm.addEventListener("submit", function (event) {
-  event.preventDefault();
+  event.preventDefault(); //새로고침 막아주기
   const result = bbInput.value;
   console.log(bbInput.value);
   if (result === numberArr) {
@@ -65,6 +65,7 @@ bbForm.addEventListener("submit", function (event) {
       }
       bbResult.textContent = strike + "스트라이크" + ball + "볼";
       resetNum();
+      c;
       console.log(resultArr);
     }
   }

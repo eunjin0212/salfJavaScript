@@ -20,16 +20,8 @@ function nextPage() {
   form.removeChild(input);
   setTimeout(function () {
     location.href = "momentum-todo.html";
-<<<<<<< HEAD
-<<<<<<< master
+
   }, 2000);
-=======
-  }, 3000);
->>>>>>> local
-=======
-  });
->>>>>>> 2dcd82f38ba5364f4fde6baec9029135b092e488
-}
 function askUser() {
   //유저 물어보기
   form.classList.add(showUserName);

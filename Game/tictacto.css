@@ -1,0 +1,9 @@
+.table {
+  display: table;
+  width: 100%;
+}
+.table-row td {
+  padding: 0px 20px;
+  height: 150px;
+  border: 1px solid black;
+}
